@@ -153,7 +153,7 @@ def battle_loop(user_char, system_char):
             return False, user_char  # User loses
 
 def main():
-    filename = "characters.csv"
+    filename = "Battle Simulator/characters.csv"
     characters = load_from_csv(filename)
     system_counter = 1
     
