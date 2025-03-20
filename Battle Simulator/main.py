@@ -3,9 +3,7 @@ from character import create_character, load_characters, save_character
 from battle import battle
 
 def show_characters():
-    """
-    Displays a list of all characters loaded from the CSV file.
-    """
+    # Displays a list of all characters loaded from the CSV file.
     characters = load_characters()
     if not characters:
         print("No characters found.")
@@ -14,10 +12,8 @@ def show_characters():
             print(f"{i+1}. {c['name']} (HP: {c['hp']}, Attack: {c['attack']}, Defense: {c['defense']}, Speed: {c['speed']}, Level: {c['level']})")
 
 def main():
-    """
-    Main function to run the Battle Simulator program.
-    Displays a menu for user interaction.
-    """
+    # Main function to run the Battle Simulator program.
+    # Displays a menu for user interaction
     while True:
         print("\n=== Battle Simulator ===")
         print("1. Create Character")
@@ -35,7 +31,7 @@ def main():
         elif choice == '3':
             characters = load_characters()
             if len(characters) < 2:
-                print("Not enough characters to battle.")
+                print("Not enough characters to battle")
             else:
                 show_characters()
                 c1_index = int(input("Choose first character (number): ")) - 1
@@ -44,7 +40,7 @@ def main():
         elif choice == '4':
             break
         else:
-            print("Invalid choice.")
+            print("Invalid choice")
 
 if __name__ == "__main__":
     main()
