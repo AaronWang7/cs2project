@@ -1,10 +1,10 @@
 import random
 
 def battle(character1, character2):
-    # Simulates a turn-based battle between two characters.
+    # turn based battle between two characters.
     print(f"\nBattle Start: {character1['name']} VS {character2['name']}")
 
-    # Inner function: Perform one attack turn
+    # attack turn tracker
     def attack_turn(attacker, defender):
         # Simulates an attack turn between two characters.
         # Calculates damage based on attacker's attack and defender's defense.
@@ -13,14 +13,14 @@ def battle(character1, character2):
         defender['hp'] -= damage
         print(f"{attacker['name']} attacks {defender['name']} for {damage} damage! Remaining HP: {defender['hp']}")
 
-    # Inner function: Check if a character is defeated
+    # Check if a character is defeated
     def is_defeated(character):
         # Checks if a character's HP is less than or equal to 0.
         return character['hp'] <= 0
 
-    # Inner function: Award experience to the winner
+    # experience to the winner
     def award_experience(winner, loser):
-        # Awards experience to the winner based on the loser's level.
+        # experience to the winner based on the loser's level.
         # If experience reaches 100, the winner levels up.
         experience_gain = loser['level'] * 10
         winner['experience'] += experience_gain
