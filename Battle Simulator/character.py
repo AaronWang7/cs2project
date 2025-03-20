@@ -2,6 +2,8 @@ import csv
 import random
 
 def create_character():
+
+    #Creates a new character with random stats. Returns a dictionary containing the character's attributes.
     name = input("Enter character name: ")
     hp = random.randint(80, 120)
     attack = random.randint(10, 20)
@@ -19,7 +21,10 @@ def create_character():
         'experience': experience
     }
 
-def save_character(character):
+def save_character(character)
+
+    #Saves a character's data to a CSV file.
+
     with open('characters.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([
@@ -33,6 +38,7 @@ def save_character(character):
         ])
 
 def load_characters():
+    #Loads characters from a CSV file. Returns a list of character dictionaries.
     characters = []
     try:
         with open('characters.csv', mode='r') as file:
