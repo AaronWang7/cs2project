@@ -25,7 +25,7 @@ def save_character(character)
 
     #Saves a character's data to a CSV file.
 
-    with open('characters.csv', mode='a', newline='') as file:
+    with open('Battle Simulator/characters.csv', mode='a', newline='') as file:
         writer = csv.writer(file)
         writer.writerow([
             character['name'],
@@ -41,7 +41,7 @@ def load_characters():
     #Loads characters from a CSV file. Returns a list of character dictionaries.
     characters = []
     try:
-        with open('characters.csv', mode='r') as file:
+        with open('Battle Simulator/characters.csv', mode='r') as file:
             reader = csv.reader(file)
             for row in reader:
                 if row:
