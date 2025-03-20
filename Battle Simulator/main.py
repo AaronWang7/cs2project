@@ -1,7 +1,10 @@
+#Import functions from different pages
 from character import create_character, load_characters, save_character
 from battle import battle
 
 def show_characters():
+    #Displays a list of all characters loaded from the CSV file.
+
     characters = load_characters()
     if not characters:
         print("No characters found.")
@@ -10,6 +13,8 @@ def show_characters():
             print(f"{i+1}. {c['name']} (HP: {c['hp']}, Attack: {c['attack']}, Defense: {c['defense']}, Speed: {c['speed']}, Level: {c['level']})")
 
 def main():
+    #Main function to run the Battle Simulator program.
+    Display a menu for user interaction.
     while True:
         print("\n=== Battle Simulator ===")
         print("1. Create Character")
