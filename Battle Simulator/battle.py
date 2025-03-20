@@ -4,8 +4,8 @@ def battle(character1, character2):
 
     #Simulates a turn-based battle between two characters.
     print(f"\nBattle Start: {character1['name']} VS {character2['name']}")
-
-    # Inner function: Perform one attack turn
+    # This is an inner function, a function inside another function
+    # Attack turn tracker
     def attack_turn(attacker, defender):
     
         #Simulates an attack turn between two characters. Calculates damage based on attacker's attack and defender's defense.
