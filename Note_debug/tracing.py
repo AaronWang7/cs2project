@@ -1,4 +1,4 @@
-#Aaron Wang, Tracing notes
+#Aaron Wang, Tracing Notes
 
 
 #what is tracing?
@@ -41,11 +41,11 @@ exception - when there is an excepyion raised
 #how do you access the debugger in VS Code?
     #F5
 #what is testing?
-    #
+    # Mkae sure there no bug, going through the code trying to break it, have testers be not the person who wrote the code
 #what are boundary conditions?
-    #
+    #Your outliers that are not likly to caused problems, User conditions that are strange and/or likliy to cause issue, extream highs and lows
 #how do you handle when users give strange inputs?
-    #
+    #Try expect
 
 trecer = trace.Trace(count=False,trace=True)
 
