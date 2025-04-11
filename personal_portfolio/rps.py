@@ -8,7 +8,7 @@ def rps_game():
         player = input("Enter one of the numbers, 1 = rock, 2 = paper, 3 = scissors:")
         if player not in op:
                 print("Enter 1,2, or 3!")
-                player = input("Enter one of the numbers, 1 = rock, 2 = paper, 3 = scissors:")
+                player = input("Enter one of the numbers, 1 = rock, 2 = paper, 3 = scissors, 0 = quit:")
                 
         else:
                 ai = (random.randrange(0,60))
@@ -63,3 +63,5 @@ def rps_game():
                 score.append("I")
                 print("This is your score, each'I'= 1 point",score)
                 print("  This is ai score, each'I'= 1 point",aiscore)
+        elif player == "0":
+                break

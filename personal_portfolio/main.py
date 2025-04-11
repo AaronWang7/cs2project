@@ -88,7 +88,6 @@ def run_project(choice):
 def main():
     while True:
         clear_screen()
-        show_intro()
         show_menu()
         
         try:

@@ -1,5 +1,5 @@
 def cal():
-    op = str(input("Which one do you want?, addition, subtraction, multiplication, division: "))
+    op = str(input("Which one do you want?, addition, subtraction, multiplication, division:, 0 = quit "))
 
     number1 = int(input("Your first number: "))
     number2 = int(input("Your 2nd number: "))
@@ -23,7 +23,7 @@ def cal():
 
     while True:
 
-        op = str(input("Which one do you want?, addition, subtraction, multiplication, division: "))
+        op = str(input("Which one do you want?, addition, subtraction, multiplication, division:, 0 = quit "))
 
         number1 = int(input("Your first number: "))
         number2 = int(input("Your 2nd number: "))
@@ -39,6 +39,8 @@ def cal():
 
         if not op ==  "addition" or "subtraction" or "multiplication" or "division":
                 print(op,"is not one of the options")
+        if op == "0":
+              break
         else:
                 print (op,"is one of the options")
     

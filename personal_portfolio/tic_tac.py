@@ -21,10 +21,13 @@ def play_tic_tac_toe():
     while True:
         for i in range (1,4,1):
             print("You can enter",i)
-            r = input(f"enter what rows you want to plce it 1-3, 1 is top:")
+            r = input(f"enter what rows you want to plce it 1-3, 1 is top(0 = quit):")
             c = input("enter where you want to plce it: 1 very left, 3 very right, 1-3:")
             if r == "1" and c == "1" and "X" not in listtop1 and "O" not in listtop1:
                 listtop1 = ("X")
+
+            if r == "0":
+                break
                 ia = (random.randrange(0,90))
                 if ia < 10 or ia == 10 and "X" not in listtop1 and "O" not in listtop1:
                     listtop1 = ("O")
