@@ -97,16 +97,57 @@ def main():
                 print("Goodbye!")
                 break
             elif choice == "1":
+                print("""
+            "title": "Calculator",
+            "desc": "Performs basic math operations like addition, subtraction, multiplication, and division.",
+            "process": "Created functions for each operation and added input validation.",
+            "learned": "How to define and use functions effectively.",
+            "group": "Individual project"
+                """)
                 cal()
             elif choice == "2":
+                print("""
+            title": "Rock Paper Scissors",
+            "desc": "Play Rock Paper Scissors against the computer.",
+            "process": "Used the `random` module to simulate computer choices.",
+            "learned": "How to use `random.randint()` and handle user input for game logic.",
+            "group": "Individual project""")
                 rps_game()
             elif choice == "3":
+                print("""
+            title": "To-Do List",
+            "desc": "Create, view, and manage tasks stored in a text file.",
+            "process": "Used string handling and file operations (`with open`) to read/write tasks.",
+            "learned": "File handling in Python and working with persistent data.",
+            "group": "Individual project
+                """)
                 load_tasks()
             elif choice == "4":
+                print("""
+            title": "Guess the Number",
+            "desc": "Guess a random number between 1 and 100 with hints after each guess.",
+            "process": "Implemented a `while` loop to keep the game running until the correct guess.",
+            "learned": "How to use loops and conditional logic to manage game flow.",
+            "group": "Individual project
+                """)
                 play_game()
             elif choice == "5":
+                print("""
+            title": "Tic Tac Toe",
+            "desc": "Play Tic Tac Toe against the computer in the terminal.",
+            "process": "Used lists to create the board and random choices for computer moves.",
+            "learned": "Game logic and turn-based control using functions and conditionals.",
+            "group": "Individual project
+                """)
                 play_tic_tac_toe()
             elif choice == "6":
+                print("""
+            title": "Shopping List",
+            "desc": "Add, view, and remove items from your shopping list.",
+            "process": "Handled user inputs with strings and list operations.",
+            "learned": "Managing user input, updating lists, and basic operations.",
+            "group": "Individual project
+                """)
                 shopping()
 
 
