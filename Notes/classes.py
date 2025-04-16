@@ -1,10 +1,11 @@
 # Classes and object notes
 
 # what is a class in Python -buleprint for creating an object
-# What is an object- like bob is a object, instance in class
+# What is an object- like bob is a object, an instance in class
 # method is a function specic to a class 
 # class can have muti method(treat pokemon, train)
 # class make program easy
+# functions that are related to objects
 # def __str__(self):
 
 
