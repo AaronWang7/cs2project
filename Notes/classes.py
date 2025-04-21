@@ -31,8 +31,8 @@ class pokemon:
             else:
                 print(f"{opponent.name} has been knocked out. {self.name} won the battle")
     
-bob = pokemon("Mr.Bob","Charizard", 95, 300)
-fluffy = pokemon("Fluffy","Arcanine", 110, 280)
+bob = pokemon("Mr.Bob","Charizard", 3000, 3000)
+fluffy = pokemon("Fluffy","Arcanine", 3000, 3100)
 
 print(bob.species)
 print(fluffy.species)
