@@ -1,7 +1,9 @@
 import pygame
 import sys
 import random
-
+import time
+player_speeds = 10
+#player points
 # Initialize PyGame
 pygame.init()
 
@@ -56,10 +58,20 @@ while True:
 
     # Handle player movement
     keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and player_x > 0:
-        player_x -= player_speed
-    if keys[pygame.K_RIGHT] and player_x < screen_width - player_width:
-        player_x += player_speed
+    if keys[pygame.K_LEFT] and player_x >= 0:
+        player_x -= 5
+        time.sleep(0.01)
+        player_x -=20
+    if keys[pygame.K_RIGHT] and player_x <= screen_width - player_width:
+        player_x += 5
+        time.sleep(0.03)
+        player_x +=20
+    if keys[pygame.K_UP] and player_y >= 0:
+        player_y -= 20
+    
+    if keys[pygame.K_DOWN]:
+        player_y += 20
+
 
     # Update bullet positions
     for bullet in bullets:
@@ -69,9 +81,7 @@ while True:
     # Update enemy positions and spawn new ones
     current_time = pygame.time.get_ticks()
     if current_time - enemy_timer > enemy_spawn_time:
-        enemy_x = random.randint(0, screen_width - enemy_width)
         enemy_y = -enemy_height
-        enemies.append([enemy_x, enemy_y])
         enemy_timer = current_time
 
     for enemy in enemies:
