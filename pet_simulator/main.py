@@ -1,34 +1,41 @@
+#Import from other pages
+from pet_actions import create_pet, view_pets, load_pet_data
+from battle import battle
+from pet import Pet
 
-import random
-import csv
-trait = ["red","yellow","green","bule"]
-species = {"dog",'cat','wolf', 'dragon'}
-print("welacome to the pet simulator!")
-with open('pet_simulator\pet.csv','r') as f:
-    if f:
-        try:
+# Main menu for actions
+def main_menu():
+    print("\nWelcome to the Pet Simulator")
+    print("1. Create a new pet")
+    print("2. View pets")
+    print("3. Battle pets")
+    print("4. Exit")
+    choice = input("Please choose one: ")
+    return choice
 
-            print("Would you like to create a new pet?(press 0 if no, 1 for crate a pet)")
-            new_pet = int(input(":"))
-            if new_pet == 0:
-                 print("Ok")
-            elif new_pet == 1:
-                class pets:
-                    def __init__(self,name,species,dmg,hp):
-                        self.name = name
-                        self.species = species
-                        self.trait = trait
-                        self.dmg = dmg
-                        self.hp = hp
-                        print(f"Name:{self.name}\nSpecies:{self.species}\nTrait:{self.trait}\nAtack:{self.dmg}\nHelth:{self.hp}")
-                        def __str__(self):
-                             return f"Name:{self.name}\nSpecies:{self.species}\ntrait:{self.trait}\nhp: {self.hp}\ndmg:{self.dmg}"
-       
-        except ValueError:
-                print("Enter 1 or 0")
-pets_system = pets(input("Enter your pet's name"),random.choice(species), random.choice(trait), random.randint(5, 50),random.randint(250, 350))
-        
+# Main function
+def main():
+    pets = load_pet_data()  # Load pet data
+    pet_objects = []  # Store data
+    while True:
+        choice = main_menu()
 
+        if choice == '1':
+            # create new pet
+            new_pet = create_pet()
+            pet_objects.append(new_pet)
+        elif choice == '2':
+            # view pet
+            pet_objects = view_pets(pet_objects)
+        elif choice == '3':
+            # battle
+            battle(pet_objects)
+        elif choice == '4':
+            print("goodbye!")
+            break
+        else:
+            print("please try again.")
 
-            
+if __name__ == "__main__":
+    main()
 

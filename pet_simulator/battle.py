@@ -1,31 +1,36 @@
-class pokemon:
-    def __init__(self,name,species,dmg,hp):
-        self.name = name
-        self.species = species
-        self.hp = hp
-        self.dmg = dmg
+#Import from other pages
+from pet_actions import view_pets
+from pet import Pet
 
-    def __str__(self):
-        return f"Name:{self.name}\nSpecies:{self.species}\nhp: {self.hp}\ndmg:{self.dmg}"
+# battle system
+def battle(pets):
+    if len(pets) < 2:
+        print("You need at least two pets to battle!")
+        return
 
-    def battle(self, opponent):
-        while self.hp > 0 and opponent.hp > 0:
-            opponent.hp -= self.dmg
-            print(f"{self.name} attacked {opponent.name} for {self.dmg} and {opponent.name} now has {opponent.hp}")
-            if opponent.hp > 0:
-                self.hp -= opponent.dmg
-                print(f"{opponent.name} attacked {self.name} for {opponent.dmg} and {self.name} now has {self.hp}")
-                if self.hp <= 0:
-                    print(f"{self.name} has been knocked out. {opponent.name} won the battle")
-            else:
-                print(f"{opponent.name} has been knocked out. {self.name} won the battle")
+    print("\nSelect two pets to battle")
+  
+    for idx, pet in enumerate(pets, start=1):
+        print(f"{idx}. {pet.name}")
     
-bob = pokemon("Mr.Bob","Charizard", 3000, 3000)
-fluffy = pokemon("Fluffy","Arcanine", 3000, 3100)
+    pet1_idx = int(input("Choose the first pet: ")) - 1
+    pet2_idx = int(input("Choose the second pet: ")) - 1
+    
+    pet1 = pets[pet1_idx]
+    pet2 = pets[pet2_idx]
 
-print(bob.species)
-print(fluffy.species)
-
-print(bob)
-bob.battle(fluffy)
-print(fluffy.hp)
+    print(f"\nBattle between {pet1.name} and {pet2.name}!\n")
+    
+    # Battle start
+    while pet1.is_alive() and pet2.is_alive():
+        pet1.attack(pet2)
+        if pet2.is_alive():
+            pet2.attack(pet1)
+    
+    # Who won the bttle
+    if pet1.is_alive():
+        print(f"\n{pet1.name} wins the battle!")
+        pet1.gain_experience(50)  # Gain exp when won
+    else:
+        print(f"\n{pet2.name} wins the battle!")
+        pet2.gain_experience(50)  # Gain exp when won
