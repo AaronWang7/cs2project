@@ -1,120 +1,89 @@
-import pygame
-import sys
-import random
+
+
+
+
+import pygame 
+import sys 
 import time
-player_speeds = 10
-#player points
-# Initialize PyGame
-pygame.init()
-
-# Set up the game window
-screen_width = 800
-screen_height = 600
-screen = pygame.display.set_mode((screen_width, screen_height))
-pygame.display.set_caption("Simple Shooter Game")
-
-# Set the frame rate
-clock = pygame.time.Clock()
-
-# Player settings
-player_width = 50
-player_height = 60
-player_x = screen_width // 2 - player_width // 2
-player_y = screen_height - player_height - 10
-player_speed = 5
-
-# Bullet settings
-bullet_width = 5
-bullet_height = 10
-bullet_speed = 7
-bullets = []
-
-# Enemy settings
-enemy_width = 50
-enemy_height = 60
-enemy_speed = 2
-enemies = []
-
-# Spawn an enemy every 2 seconds
-enemy_timer = 0
-enemy_spawn_time = 2000
-
-# Collision detection function
-def check_collision(rect1, rect2):
-    return pygame.Rect(rect1).colliderect(pygame.Rect(rect2))
-
-# Main game loop
+import random
+  
+  
+# initializing the constructor 
+pygame.init() 
+  
+# screen resolution 
+res = (1580,1320) 
+  
+# opens up a window 
+screen = pygame.display.set_mode(res) 
+  
+# white color 
+color = (255,255,255) 
+  
+# light shade of the button 
+color_light = (170,170,170) 
+  
+# dark shade of the button 
+color_dark = (100,100,100) 
+  
+# stores the width of the 
+# screen into a variable 
+width = screen.get_width() 
+  
+# stores the height of the 
+# screen into a variable 
+height = screen.get_height() 
+  
+# defining a font 
+smallfont = pygame.font.SysFont('Corbel',25) 
+  
+# rendering a text written in 
+# this font 
+reaction_time = 0
+wait_time1 = None
+text = smallfont.render('Click when it tells you to...' , True , color) 
+wait_time1 = random.randint(1,9)
+time.sleep(wait_time1)
+text = smallfont.render('Click!' , True , color) 
 while True:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            sys.exit()
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                # Create a bullet at the current player position
-                bullet_x = player_x + player_width // 2 - bullet_width // 2
-                bullet_y = player_y
-                bullets.append([bullet_x, bullet_y])
+    reaction_time += 0.1
+    time.sleep(0.1)
+    for ev in pygame.event.get():
+                
+            #checks if a mouse is clicked 
+            if ev.type == pygame.MOUSEBUTTONDOWN:
+                
+                
+                #if the mouse is clicked on the 
+                # button the game is terminated
+                try:
+                    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
+                            text = smallfont.render(f'Your reaction time is {reaction_time*1000} MS' , True , color) 
+                except NameError:
+                     reaction_time = 1000000
+                     text = smallfont.render(f'You clicked before it tells you to\n,so your reaction is {reaction_time*1000} MS' , True , color) 
 
-    # Handle player movement
-    keys = pygame.key.get_pressed()
-    if keys[pygame.K_LEFT] and player_x >= 0:
-        player_x -= 5
-        time.sleep(0.01)
-        player_x -=20
-    if keys[pygame.K_RIGHT] and player_x <= screen_width - player_width:
-        player_x += 5
-        time.sleep(0.03)
-        player_x +=20
-    if keys[pygame.K_UP] and player_y >= 0:
-        player_y -= 20
-    
-    if keys[pygame.K_DOWN]:
-        player_y += 20
+                    
 
 
-    # Update bullet positions
-    for bullet in bullets:
-        bullet[1] -= bullet_speed
-    bullets = [bullet for bullet in bullets if bullet[1] > 0]
 
-    # Update enemy positions and spawn new ones
-    current_time = pygame.time.get_ticks()
-    if current_time - enemy_timer > enemy_spawn_time:
-        enemy_y = -enemy_height
-        enemy_timer = current_time
-
-    for enemy in enemies:
-        enemy[1] += enemy_speed
-
-    # Check for collisions
-    for bullet in bullets[:]:
-        for enemy in enemies[:]:
-            if check_collision((bullet[0], bullet[1], bullet_width, bullet_height),
-                               (enemy[0], enemy[1], enemy_width, enemy_height)):
-                bullets.remove(bullet)
-                enemies.remove(enemy)
-                break
-
-    # Remove enemies that are off the screen
-    enemies = [enemy for enemy in enemies if enemy[1] < screen_height]
-
-    # Fill the screen with black
-    screen.fill((0, 0, 0))
-
-    # Draw the player
-    pygame.draw.rect(screen, (0, 128, 255), (player_x, player_y, player_width, player_height))
-
-    # Draw the bullets
-    for bullet in bullets:
-        pygame.draw.rect(screen, (255, 255, 255), (bullet[0], bullet[1], bullet_width, bullet_height))
-
-    # Draw the enemies
-    for enemy in enemies:
-        pygame.draw.rect(screen, (255, 0, 0), (enemy[0], enemy[1], enemy_width, enemy_height))
-
-    # Update the display
-    pygame.display.flip()
-
-    # Cap the frame rate at 60 FPS
-    clock.tick(60)
+    # fills the screen with a color 
+    screen.fill((60,25,60)) 
+      
+    # stores the (x,y) coordinates into 
+    # the variable as a tuple 
+    mouse = pygame.mouse.get_pos() 
+      
+    # if mouse is hovered on a button it 
+    # changes to lighter shade  
+    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
+        pygame.draw.rect(screen,color_light,[width/2,height/2,140,40]) 
+          
+    else: 
+        pygame.draw.rect(screen,color_dark,[width/2,height/2,140,40]) 
+      
+    # superimposing the text onto our button 
+    screen.blit(text , (width/2+300,height/2)) 
+      
+    # updates the frames of the game 
+    pygame.display.update() 
