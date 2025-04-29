@@ -45,7 +45,15 @@ text = smallfont.render('Click when it tells you to...' , True , color)
 wait_time1 = random.randint(1,9)
 time.sleep(wait_time1)
 text = smallfont.render('Click!' , True , color) 
+
+for event in pygame.event.get():
+    if event.type == pygame.KEYDOWN:
+         pygame.quit()
+         sys.exit()
 while True:
+
+                
+
     reaction_time += 0.1
     time.sleep(0.1)
     for ev in pygame.event.get():
@@ -63,7 +71,9 @@ while True:
                      reaction_time = 1000000
                      text = smallfont.render(f'You clicked before it tells you to\n,so your reaction is {reaction_time*1000} MS' , True , color) 
 
-                    
+
+
+              
 
 
 
