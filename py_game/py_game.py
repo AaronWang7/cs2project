@@ -1,7 +1,7 @@
 
 
 
-
+import csv
 import pygame 
 import sys 
 import time
@@ -62,17 +62,32 @@ while True:
                 #if the mouse is clicked on the 
                 # button the game is terminated
                 try:
-                    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40: 
-                            text = smallfont.render(f'Your reaction time is {reaction_time*1000} MS' , True , color) 
+                    if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40 and reaction_time <= 1000000:
+                        score = reaction_time
+                        with open("py_game\score.csv",'r') as f:
+                                best_score = f
+                                if float(best_score) >= reaction_time:
+                                    print("New high score!")
+                                else:
+                                    print("Sorry you didn't beat you high score!")
+                        text = smallfont.render(f'Your reaction time is {score*1000} MS\npress q to quit, and r to play again' , True , color)
+                    else:
+                        text = smallfont.render(f'press q to quit, and r to play again, \ndont click before it tells you to!' , True , color)
+
+
+
+
                 except NameError:
                      reaction_time = 1000000
-                     text = smallfont.render(f'You clicked before it tells you to\n,so your reaction is {reaction_time*1000} MS' , True , color)
+                     text = smallfont.render(f'You clicked before it tells you to\n,so your reaction is {reaction_time*1000} MS\n press q to quit, and r to play again' , True , color)
+                     
         
             if ev.type == pygame.KEYDOWN:
-                         qpygame.quit()
+                    if ev.key == pygame.K_q:
+                         pygame.quit()
                          sys.exit()
-
-
+                    elif ev.key == pygame.K_r:
+                         print("Quit")
 
               
 
