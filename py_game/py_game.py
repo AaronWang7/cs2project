@@ -64,12 +64,7 @@ while True:
                 try:
                     if width/2 <= mouse[0] <= width/2+140 and height/2 <= mouse[1] <= height/2+40 and reaction_time <= 1000000:
                         score = reaction_time
-                        with open("py_game\score.csv",'r') as f:
-                                best_score = f
-                                if float(best_score) >= reaction_time:
-                                    print("New high score!")
-                                else:
-                                    print("Sorry you didn't beat you high score!")
+
                         text = smallfont.render(f'Your reaction time is {score*1000} MS\npress q to quit, and r to play again' , True , color)
                     else:
                         text = smallfont.render(f'press q to quit, and r to play again, \ndont click before it tells you to!' , True , color)
@@ -87,7 +82,7 @@ while True:
                          pygame.quit()
                          sys.exit()
                     elif ev.key == pygame.K_r:
-                         print("Quit")
+                         break
 
               
 
